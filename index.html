@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bulk Email Sender</title>
+</head>
+<body>
+  <h2>Send Bulk Emails</h2>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <p style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
+    {% endfor %}
+  {% endwith %}
+  <form method="POST">
+    <label>Recipients (comma-separated):</label><br>
+    <input type="text" name="recipients" required><br><br>
+
+    <label>Subject:</label><br>
+    <input type="text" name="subject" required><br><br>
+
+    <label>Message:</label><br>
+    <textarea name="message" rows="6" cols="40" required></textarea><br><br>
+
+    <input type="submit" value="Send Emails">
+  </form>
+</body>
+</html>
